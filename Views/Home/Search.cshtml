@@ -1,0 +1,7 @@
+﻿@model HermesMsgClient.Models.MessageResponse
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="col-md-12">
+    @Html.Raw(System.Net.WebUtility.HtmlDecode(Model.Text))
+</div>

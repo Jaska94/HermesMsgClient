@@ -1,0 +1,60 @@
+﻿@model HermesMsgClient.Models.Message
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="row">
+<div class="col-md-6">
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">New Message</button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">New Message</h4>
+                </div>
+                <div class="modal-body">
+
+                    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+                    {
+
+                        <span asp-validation-summary="ModelOnly"></span>
+
+                        <label asp-for="Text">Write a message</label>
+                        <textarea asp-for="Text" id="summernote"></textarea>
+                        <span asp-validation-for="Text"></span><br />
+
+                        <input class="btn" type="submit" value="Create" />
+
+
+                    }
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <p>@ViewBag.result<p />
+
+</div>
+    <div class="col-md-6"></div>
+    @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+    {
+
+        <span asp-validation-summary="ModelOnly"></span>
+
+        <label asp-for="Id">Insert ID</label>
+        <input asp-for="Id" >
+        <span asp-validation-for="Id"></span><br />
+
+        <input class="btn" type="submit" value="Search" />
+
+
+    }
+</div>
